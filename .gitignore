@@ -1,0 +1,10 @@
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+.DS_Store
+
+# 临时文件
+*.ipa
+*.zip
