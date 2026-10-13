@@ -1,5 +1,3 @@
-
-Enter file contents here
 //
 //  VideoCardGridView.swift
 //  BabyVideoBox
