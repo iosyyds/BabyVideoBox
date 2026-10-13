@@ -1,61 +1,95 @@
+
+Enter file contents here
 //
 //  VideoCardGridView.swift
 //  BabyVideoBox
+//  抖音风格全屏竖屏，上下滑动切换
 //
 
 import SwiftUI
+import AVKit
 
 struct VideoCardGridView: View {
-    @State private var videos: [VideoItem] = []
-    @State private var selectedVideo: VideoItem?
-    @State private var isPlayingFullScreen = false
-
-    let columns = [GridItem(.flexible(), spacing: 20), GridItem(.flexible(), spacing: 20)]
+    @State private var videos: [VideoItem] = sampleVideos
+    @State private var currentIndex = 0
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(videos) { video in
-                        VideoCardView(video: video) {
-                            selectedVideo = video
-                            isPlayingFullScreen = true
-                        }
-                    }
-                }
-                .padding(20)
-            }
-            .navigationTitle("宝宝视频")
-            .navigationBarTitleDisplayMode(.large)
-            .background(LinearGradient(gradient: Gradient(colors: [Color(red: 0.95, green: 0.97, blue: 1.0), Color(red: 0.9, green: 0.95, blue: 1.0)]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
-        }
-        .onAppear { videos = VideoItem.loadAllVideos() }
-        .fullScreenCover(isPresented: $isPlayingFullScreen) {
-            if let video = selectedVideo {
-                FullScreenVideoPlayerView(video: video) { isPlayingFullScreen = false }
+        TabView(selection: $currentIndex) {
+            ForEach(Array(videos.enumerated()), id: \.element.id) { index, video in
+                FullScreenVideoPage(video: video)
+                    .tag(index)
             }
         }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
-struct VideoCardView: View {
+struct FullScreenVideoPage: View {
     let video: VideoItem
-    let onTap: () -> Void
-    @State private var isPressed = false
+    @State private var player: AVPlayer?
+    @State private var showUI = false
 
     var body: some View {
-        Button(action: onTap) {
-            VStack(spacing: 0) {
-                ZStack {
-                    LinearGradient(gradient: Gradient(colors: [Color(red: 0.4, green: 0.7, blue: 1.0), Color(red: 0.2, green: 0.5, blue: 0.9)]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    Image(systemName: "play.circle.fill").font(.system(size: 80)).foregroundColor(.white).shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
-                }
-                .frame(height: 180).clipped()
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: video.gradientColors),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .edgesIgnoringSafeArea(.all)
 
-                Text(video.title).font(.system(size: 18, weight: .bold)).foregroundColor(.primary).lineLimit(2).multilineTextAlignment(.center).padding(12).frame(maxWidth: .infinity).background(Color.white)
+            if let player = player {
+                VideoPlayer(player: player)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        withAnimation { showUI.toggle() }
+                    }
+            } else {
+                VStack(spacing: 20) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(2.5)
+                    Text("加载中...")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                }
             }
-            .background(Color.white).cornerRadius(20).shadow(color: .black.opacity(0.15), radius: 15, x: 0, y: 8).scaleEffect(isPressed ? 0.95 : 1.0).animation(.easeInOut(duration: 0.15), value: isPressed)
+
+            VStack {
+                HStack {
+                    Spacer()
+                    Text(video.title)
+                        .font(.system(size: 22, weight: .bold))
+                        .foregroundColor(.white)
+                        .shadow(color: .black.opacity(0.5), radius: 5)
+                        .padding(.top, 60)
+                    Spacer()
+                }
+                Spacer()
+            }
+            .opacity(showUI ? 1 : 0)
         }
-        .buttonStyle(PlainButtonStyle()).onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { p in isPressed = p }, perform: {})
+        .statusBar(hidden: true)
+        .onAppear { setupPlayer() }
+        .onDisappear { player?.pause() }
+    }
+
+    private func setupPlayer() {
+        guard let url = video.videoURL else { return }
+        let playerItem = AVPlayerItem(url: url)
+        let newPlayer = AVPlayer(playerItem: playerItem)
+
+        NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: playerItem,
+            queue: .main
+        ) { _ in
+            newPlayer.seek(to: .zero)
+            newPlayer.play()
+        }
+
+        self.player = newPlayer
+        newPlayer.play()
     }
 }
