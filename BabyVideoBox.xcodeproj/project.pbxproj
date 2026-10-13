@@ -1,0 +1,275 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1000001 /* BabyVideoBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002 /* BabyVideoBoxApp.swift */; };
+		A1000003 /* VideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004 /* VideoItem.swift */; };
+		A1000005 /* VideoCardGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000006 /* VideoCardGridView.swift */; };
+		A1000007 /* FullScreenVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000008 /* FullScreenVideoPlayerView.swift */; };
+		A1000009 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000010 /* SceneDelegate.swift */; };
+		A1000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000012 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1000013 /* BabyVideoBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabyVideoBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000002 /* BabyVideoBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabyVideoBoxApp.swift; sourceTree = "<group>"; };
+		A1000004 /* VideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItem.swift; sourceTree = "<group>"; };
+		A1000006 /* VideoCardGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCardGridView.swift; sourceTree = "<group>"; };
+		A1000008 /* FullScreenVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenVideoPlayerView.swift; sourceTree = "<group>"; };
+		A1000010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A1000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1000014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1000015 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1000016 = {
+			isa = PBXGroup;
+			children = (
+				A1000017 /* BabyVideoBox */,
+				A1000018 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1000018 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1000013 /* BabyVideoBox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1000017 /* BabyVideoBox */ = {
+			isa = PBXGroup;
+			children = (
+				A1000002 /* BabyVideoBoxApp.swift */,
+				A1000010 /* SceneDelegate.swift */,
+				A1000019 /* Models */,
+				A1000020 /* Views */,
+				A1000012 /* Assets.xcassets */,
+				A1000014 /* Info.plist */,
+			);
+			path = BabyVideoBox;
+			sourceTree = "<group>";
+		};
+		A1000019 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1000004 /* VideoItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1000020 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1000006 /* VideoCardGridView.swift */,
+				A1000008 /* FullScreenVideoPlayerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1000021 /* BabyVideoBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000022 /* Build configuration list for PBXNativeTarget "BabyVideoBox" */;
+			buildPhases = (
+				A1000023 /* Sources */,
+				A1000015 /* Frameworks */,
+				A1000024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BabyVideoBox;
+			productName = BabyVideoBox;
+			productReference = A1000013 /* BabyVideoBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1000025 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1000021 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A1000026 /* Build configuration list for PBXProject "BabyVideoBox" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1000016;
+			productRefGroup = A1000018 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1000021 /* BabyVideoBox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1000024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000011 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1000023 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000001 /* BabyVideoBoxApp.swift in Sources */,
+				A1000003 /* VideoItem.swift in Sources */,
+				A1000005 /* VideoCardGridView.swift in Sources */,
+				A1000007 /* FullScreenVideoPlayerView.swift in Sources */,
+				A1000009 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1000027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)", );
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1000028 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1000029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BabyVideoBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", );
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.babyvideobox.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1000030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BabyVideoBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", );
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.babyvideobox.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1000026 /* Build configuration list for PBXProject "BabyVideoBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000027 /* Debug */,
+				A1000028 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000022 /* Build configuration list for PBXNativeTarget "BabyVideoBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000029 /* Debug */,
+				A1000030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1000025 /* Project object */;
+}
