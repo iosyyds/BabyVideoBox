@@ -1,0 +1,50 @@
+name: 构建未签名IPA
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+
+    - name: 构建Release版本
+      run: |
+        xcodebuild \
+          -project BabyVideoBox.xcodeproj \
+          -scheme BabyVideoBox \
+          -configuration Release \
+          -sdk iphoneos \
+          -derivedDataPath build \
+          CODE_SIGNING_ALLOWED=NO \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY="" \
+          build
+
+    - name: 创建ipa包
+      run: |
+        mkdir -p build/Payload
+        cp -r build/Build/Products/Release-iphoneos/BabyVideoBox.app build/Payload/
+        
+        if [ -d "BabyVideoBox/Resources/Videos" ]; then
+          echo "注入视频文件..."
+          find BabyVideoBox/Resources/Videos -type f \( -name "*.mp4" -o -name "*.mov" \) -exec cp {} build/Payload/BabyVideoBox.app/ \;
+        fi
+        
+        cd build
+        zip -r BabyVideoBox-unsigned.ipa Payload
+        mv BabyVideoBox-unsigned.ipa ../BabyVideoBox-unsigned.ipa
+        cd ..
+        ls -lh BabyVideoBox-unsigned.ipa
+
+    - name: 上传IPA
+      uses: actions/upload-artifact@v4
+      with:
+        name: BabyVideoBox-unsigned-ipa
+        path: BabyVideoBox-unsigned.ipa
+        retention-days: 90
